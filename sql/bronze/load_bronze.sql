@@ -62,8 +62,8 @@ BEGIN
 	BEGIN TRY		
 
 		-- =====================================================
-    -- TABLE 1: bronze.olist_customers_dataset
-    -- =====================================================
+        -- TABLE 1: bronze.olist_customers_dataset
+        -- =====================================================
 		SET @CurrentTable = 'olist_customers_dataset';
 		SET @start_time   = SYSDATETIME();
 
@@ -104,11 +104,11 @@ BEGIN
 
 		PRINT '>> Rows Loaded : ' + CAST(@RowsLoaded AS NVARCHAR(20));
 		PRINT '>> Duration    : ' + CAST(DATEDIFF_BIG(MILLISECOND, @start_time, @end_time)/1000.0 AS NVARCHAR) + ' seconds';
-    PRINT '>> -----------------------------------';
+        PRINT '>> -----------------------------------';
 		
 		-- =====================================================
-    -- TABLE 2: bronze.olist_geolocation_dataset
-    -- =====================================================
+        -- TABLE 2: bronze.olist_geolocation_dataset
+        -- =====================================================
 		SET @CurrentTable = 'olist_geolocation_dataset'; 
 		SET @start_time   = SYSDATETIME();
 
@@ -151,8 +151,8 @@ BEGIN
 		PRINT '>> -----------------------------------';
 
 		-- =====================================================
-    -- TABLE 3: bronze.olist_order_items_dataset
-    -- =====================================================
+        -- TABLE 3: bronze.olist_order_items_dataset
+        -- =====================================================
 		SET @CurrentTable = 'olist_order_items_dataset'; 
 		SET @start_time   = SYSDATETIME();
 
@@ -195,8 +195,8 @@ BEGIN
 		PRINT '>> -----------------------------------';
 
 		-- =====================================================
-    -- TABLE 4: bronze.olist_order_payments_dataset
-    -- =====================================================
+        -- TABLE 4: bronze.olist_order_payments_dataset
+        -- =====================================================
 		SET @CurrentTable = 'olist_order_payments_dataset';
 		SET @start_time   = SYSDATETIME();
 
@@ -235,16 +235,16 @@ BEGIN
 		);
 		PRINT '>> Rows Loaded : ' + CAST(@RowsLoaded AS NVARCHAR(20));
 		PRINT '>> Duration    : ' + CAST(DATEDIFF_BIG(MILLISECOND, @start_time, @end_time)/1000.0 AS NVARCHAR) + ' seconds';
-    PRINT '>> -----------------------------------';
+        PRINT '>> -----------------------------------';
 
 		-- =====================================================
-    -- TABLE 5: bronze.olist_order_reviews_dataset
+        -- TABLE 5: bronze.olist_order_reviews_dataset
 		-- NOTE: 
 		--	- ROWTERMINATOR intentionally omitted.
 		--	- FORMAT = 'CSV' with FIELDQUOTE handles embedded
 		--	- line breaks in review_comment_message automatically.
 		--	- Adding ROWTERMINATOR conflicts with FORMAT=CSV parser.
-    -- =====================================================
+        -- =====================================================
 		SET @CurrentTable = 'olist_order_reviews_dataset'; 
 		SET @start_time   = SYSDATETIME();
 
@@ -256,10 +256,10 @@ BEGIN
 		BULK INSERT bronze.olist_order_reviews_dataset
 		FROM ''' + @BasePath + N'olist_order_reviews_dataset.csv''
 		WITH (
-			      FORMAT          = ''CSV'',
-            FIELDQUOTE      = ''"'',
-            FIELDTERMINATOR = '','',
-			      FIRSTROW        = 2,
+			FORMAT          = ''CSV'',
+        	FIELDQUOTE      = ''"'',
+        	FIELDTERMINATOR = '','',
+			FIRSTROW        = 2,
             CODEPAGE        = ''65001'',
             TABLOCK
 		);';
@@ -287,8 +287,8 @@ BEGIN
         PRINT '>> -----------------------------------';
 
 		-- =====================================================
-    -- TABLE 6: bronze.olist_orders_dataset
-    -- =====================================================
+    	-- TABLE 6: bronze.olist_orders_dataset
+    	-- =====================================================
 		SET @CurrentTable = 'olist_orders_dataset';
 		SET @start_time   = SYSDATETIME();
 
@@ -328,11 +328,11 @@ BEGIN
 		
 		PRINT '>> Rows Loaded : ' + CAST(@RowsLoaded AS NVARCHAR(20));
 		PRINT '>> Duration    : ' + CAST(DATEDIFF_BIG(MILLISECOND, @start_time, @end_time)/1000.0 AS NVARCHAR) + ' seconds';
-    PRINT '>> -----------------------------------';
+    	PRINT '>> -----------------------------------';
 
 		-- =====================================================
-    -- TABLE 7: bronze.olist_products_dataset
-    -- =====================================================
+    	-- TABLE 7: bronze.olist_products_dataset
+    	-- =====================================================
 		SET @CurrentTable = 'olist_products_dataset';
 		SET @start_time   = SYSDATETIME();
 
@@ -372,11 +372,11 @@ BEGIN
 		
 		PRINT '>> Rows Loaded : ' + CAST(@RowsLoaded AS NVARCHAR(20));
 		PRINT '>> Duration    : ' + CAST(DATEDIFF_BIG(MILLISECOND, @start_time, @end_time)/1000.0 AS NVARCHAR) + ' seconds';
-    PRINT '>> -----------------------------------';
+    	PRINT '>> -----------------------------------';
 
 		-- =====================================================
-    -- TABLE 8: bronze.olist_sellers_dataset
-    -- =====================================================
+    	-- TABLE 8: bronze.olist_sellers_dataset
+    	-- =====================================================
 		SET @CurrentTable = 'olist_sellers_dataset'; 
 		SET @start_time   = SYSDATETIME();
 
@@ -416,11 +416,11 @@ BEGIN
 		
 		PRINT '>> Rows Loaded : ' + CAST(@RowsLoaded AS NVARCHAR(20));
 		PRINT '>> Duration    : ' + CAST(DATEDIFF_BIG(MILLISECOND, @start_time, @end_time)/1000.0 AS NVARCHAR) + ' seconds';
-    PRINT '>> -----------------------------------';
+    	PRINT '>> -----------------------------------';
 
 		-- =====================================================
-    -- TABLE 9: bronze.product_category_name_translation
-    -- =====================================================
+    	-- TABLE 9: bronze.product_category_name_translation
+    	-- =====================================================
 		SET @CurrentTable = 'product_category_name_translation'; 
 		SET @start_time   = SYSDATETIME();
 
@@ -460,11 +460,11 @@ BEGIN
 		
 		PRINT '>> Rows Loaded : ' + CAST(@RowsLoaded AS NVARCHAR(20));
 		PRINT '>> Duration    : ' + CAST(DATEDIFF_BIG(MILLISECOND, @start_time, @end_time)/1000.0 AS NVARCHAR) + ' seconds';
-    PRINT '>> -----------------------------------';
+   		PRINT '>> -----------------------------------';
 
 		-- =========================================================
-    -- STEP 2: UPDATE BATCH LOG ON SUCCESS
-    -- =========================================================
+    	-- STEP 2: UPDATE BATCH LOG ON SUCCESS
+    	-- =========================================================
 		SET @batch_end_time = SYSDATETIME();
 
 		UPDATE etl.BatchLog
@@ -489,8 +489,8 @@ BEGIN
 	END TRY 
 
 	-- =========================================================
-  -- ERROR HANDLING
-  -- =========================================================
+  	-- ERROR HANDLING
+	-- =========================================================
 	BEGIN CATCH
 
 		SET @batch_end_time = SYSDATETIME();
@@ -523,7 +523,7 @@ BEGIN
 		PRINT '================================================';
         PRINT 'ERROR OCCURRED DURING BRONZE LAYER LOAD';
         PRINT 'Batch ID     : ' + CAST(@BatchID AS NVARCHAR);
-		    PRINT 'Table        : ' + ISNULL(@CurrentTable, 'UNKNOWN');
+		PRINT 'Table        : ' + ISNULL(@CurrentTable, 'UNKNOWN');
         PRINT 'Error Message: ' + ERROR_MESSAGE();
         PRINT 'Error Number : ' + CAST(ERROR_NUMBER() AS NVARCHAR);
         PRINT 'Error State  : ' + CAST(ERROR_STATE() AS NVARCHAR);
@@ -532,4 +532,11 @@ BEGIN
 		THROW;
 	END CATCH
 END;
+GO
+
+PRINT '============================================================';
+PRINT 'DEPLOYMENT SUMMARY:';
+PRINT '  Stored Procedure: bronze.load_bronze';
+PRINT '  Status          : SUCCESS';
+PRINT '============================================================';
 GO
