@@ -291,16 +291,7 @@ CREATE TABLE gold.fact_delivery (
     CONSTRAINT FK_fact_delivery_status   FOREIGN KEY (order_status_key) 
         REFERENCES gold.dim_order_status(order_status_key),
     CONSTRAINT FK_fact_delivery_purchase_date FOREIGN KEY (order_purchase_date_key) 
-        REFERENCES gold.dim_date(date_key),
-    CONSTRAINT FK_fact_delivery_approved_date FOREIGN KEY (order_approved_date_key) 
-        REFERENCES gold.dim_date(date_key),
-    CONSTRAINT FK_fact_delivery_carrier_date  FOREIGN KEY (order_delivered_carrier_date_key) 
-        REFERENCES gold.dim_date(date_key),
-    CONSTRAINT FK_fact_delivery_customer_date FOREIGN KEY (order_delivered_customer_date_key) 
-        REFERENCES gold.dim_date(date_key),
-    CONSTRAINT FK_fact_delivery_estimated_date FOREIGN KEY (order_estimated_delivery_date_key) 
         REFERENCES gold.dim_date(date_key)
-
 );
 GO
 
@@ -402,18 +393,6 @@ GO
 CREATE INDEX IX_fact_delivery_purchase_date_key               
     ON gold.fact_delivery(order_purchase_date_key);
 GO
-CREATE INDEX IX_fact_delivery_approved_date_key               
-    ON gold.fact_delivery(order_approved_date_key);
-GO
-CREATE INDEX IX_fact_delivery_carrier_date_key 
-    ON gold.fact_delivery(order_delivered_carrier_date_key);
-GO
-CREATE INDEX IX_fact_delivery_delivered_customer_date_key     
-    ON gold.fact_delivery(order_delivered_customer_date_key);
-GO
-CREATE INDEX IX_fact_delivery_estimated_delivery_date_key     
-    ON gold.fact_delivery(order_estimated_delivery_date_key);
-GO
 
 -- Indexes for fact_reviews
 CREATE INDEX IX_fact_reviews_order_id         
@@ -449,7 +428,7 @@ PRINT '  Schema          : gold';
 PRINT '  Dimensions      : 6 tables (customer, product, seller, date, order_status, payment_method)';
 PRINT '  Facts           : 4 tables (sales, delivery, reviews, payments)';
 PRINT '  Constraints     : PRIMARY KEY, UNIQUE, FOREIGN KEY applied';
-PRINT '  Indexes         : 20 performance indexes created';
+PRINT '  Indexes         : 16 performance indexes created';
 PRINT '  Status          : SUCCESS';
 PRINT '============================================================';
 GO
