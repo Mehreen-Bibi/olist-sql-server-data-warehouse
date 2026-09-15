@@ -34,22 +34,22 @@ Diagrams (`/docs/diagrams`):
 ---
 
 ## Project Structure
-
+```
 ├── scripts/
-│ ├── 01_create_database_schemas.sql # Database + bronze/silver/gold/etl schemas
-│ ├── 02_create_etl_tables.sql # etl.BatchLog, etl.TableLoadLog
-│ ├── 03_create_bronze_tables.sql # Bronze DDL (9 raw staging tables)
-│ ├── 04_create_silver_tables.sql # Silver DDL (cleaned, typed, PKs, indexes)
-│ ├── 05_create_gold_tables.sql # Gold DDL (star schema: 6 dims + 4 facts)
-│ ├── procedures/
-│ │ ├── load_bronze.sql # bronze.load_bronze
-│ │ ├── load_silver.sql # silver.load_silver
-│ │ └── load_gold.sql # gold.load_gold
-│ └── run_pipeline.sql # Master orchestration script
+│   ├── 01_create_database_schemas.sql     # Database + bronze/silver/gold/etl schemas
+│   ├── 02_create_etl_tables.sql           # etl.BatchLog, etl.TableLoadLog
+│   ├── 03_create_bronze_tables.sql        # Bronze DDL (9 raw staging tables)
+│   ├── 04_create_silver_tables.sql        # Silver DDL (cleaned, typed, PKs, indexes)
+│   ├── 05_create_gold_tables.sql          # Gold DDL (star schema: 6 dims + 4 facts)
+│   ├── procedures/
+│   │   ├── load_bronze.sql                # bronze.load_bronze
+│   │   ├── load_silver.sql                # silver.load_silver
+│   │   └── load_gold.sql                  # gold.load_gold
+│   └── run_pipeline.sql                   # Master orchestration script
 ├── docs/
-│ └── diagrams/ # .drawio architecture & dataflow diagrams
+│   └── diagrams/                          # .drawio architecture & dataflow diagrams
 └── README.md
-
+```
 ---
 
 ## Data Model
